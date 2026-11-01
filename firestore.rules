@@ -1,0 +1,30 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function signedIn() { return request.auth != null; }
+    function isAdmin() { return signedIn() && request.auth.token.admin == true; }
+
+    match /settings/{id} {
+      allow read: if true;
+      allow write: if false;
+    }
+    match /services/{id} {
+      allow read: if true;
+      allow write: if false;
+    }
+    match /gallery/{id} {
+      allow read: if true;
+      allow create, update, delete: if isAdmin();
+    }
+    match /orders/{id} {
+      allow create: if false;
+      allow read: if isAdmin() ||
+        (signedIn() && resource.data.customerUid == request.auth.uid);
+      allow update: if signedIn() &&
+        resource.data.customerUid == request.auth.uid &&
+        request.resource.data.diff(resource.data).affectedKeys()
+          .hasOnly(['paymentProofUrl', 'paymentSubmittedAt']);
+      allow delete: if isAdmin();
+    }
+  }
+}

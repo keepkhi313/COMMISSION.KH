@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ART STUDIO | Commission</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#101c35;--navy2:#1c2d4d;--red:#9b3045;--bg:#f8f7f5;--white:#fff;--text:#242a35;--muted:#858995;--border:#e9e6e3;--green:#43845f}
+*{box-sizing:border-box;margin:0;padding:0}body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;line-height:1.65}
+button,input,select,textarea{font:inherit}button{cursor:pointer}
+nav{min-height:72px;padding:0 8%;display:flex;align-items:center;justify-content:space-between;background:#fff;border-bottom:1px solid var(--border);position:sticky;top:0;z-index:20}
+.logo{color:var(--navy);font-family:'Playfair Display',serif;font-size:24px;font-weight:bold;letter-spacing:2px}
+.nav-links{display:flex;gap:22px}.nav-links a{text-decoration:none;color:var(--text);font-size:13px}.nav-links a:hover{color:var(--red)}
+.hero{background:var(--navy);color:#fff;min-height:410px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:75px 20px}
+.hero small{letter-spacing:5px;color:#d7a0aa}.hero h1{font-family:'Playfair Display',serif;font-size:clamp(45px,8vw,82px);line-height:1.2;margin:20px 0}.hero p{color:#c6cbd5;max-width:520px}
+.btn{display:inline-block;padding:12px 28px;background:var(--red);color:white;border:0;text-decoration:none;margin-top:22px}.btn:hover{background:#b04459}
+section{padding:70px 8%}.section-title{text-align:center;margin-bottom:38px}.section-title h2{font-family:'Playfair Display',serif;color:var(--navy);font-size:38px}.section-title p{color:var(--muted);font-size:13px}
+.status-panel{background:#fff;border:1px solid var(--border);padding:24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:15px;max-width:900px;margin:auto}
+.status-label{font-weight:700;color:var(--green)}.status-label.closed{color:var(--red)}
+.gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.art-card{background:#fff;border:1px solid var(--border);overflow:hidden}.art-card img{width:100%;aspect-ratio:4/5;object-fit:cover;display:block}.art-info{padding:13px}.art-info h3{font-size:14px}.art-info p{font-size:12px;color:var(--muted)}
+.price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.price-card{background:#fff;padding:28px 20px;border:1px solid var(--border);text-align:center}.price-card h3{font-family:'Playfair Display',serif;font-size:23px;color:var(--navy)}.amount{color:var(--red);font-size:29px;font-weight:bold;margin:12px 0}.price-card p{font-size:13px;color:var(--muted)}
+.queue-box{max-width:700px;margin:auto;background:var(--navy);color:#fff;padding:32px;text-align:center}.queue-box h3{font-family:'Playfair Display',serif;font-size:25px}.queue-number{font-size:44px;font-weight:bold;color:#e7a0ad;margin:8px}
+.form-box,.admin-box{max-width:760px;margin:auto;background:#fff;padding:32px;border:1px solid var(--border)}.field{margin-bottom:17px}.field label{display:block;margin-bottom:6px;font-size:13px;font-weight:600}
+.field input,.field select,.field textarea{width:100%;padding:11px;border:1px solid #dedbd8;border-radius:2px;background:#fff;outline:none}.field textarea{min-height:105px;resize:vertical}
+.field input:focus,.field textarea:focus,.field select:focus{border-color:var(--red)}.submit-btn{width:100%;padding:13px;background:var(--navy);color:#fff;border:0}.submit-btn:hover{background:var(--red)}.submit-btn:disabled{opacity:.5;cursor:not-allowed}
+.note{font-size:12px;color:var(--muted);margin-top:10px}.payment-box{display:none;max-width:760px;margin:22px auto;padding:28px;background:#fff;border:1px solid var(--border);text-align:center}.payment-box img{max-width:250px;width:100%;margin:18px auto;display:block}
+.order-card{border:1px solid var(--border);padding:18px;margin:14px 0;background:#fff;overflow-wrap:anywhere}.order-card h3{color:var(--navy)}.order-card p{font-size:13px;margin:5px 0}
+.admin-section{border-top:1px solid var(--border);margin-top:25px;padding-top:24px}.hidden{display:none!important}
+.admin-actions{display:flex;gap:8px;flex-wrap:wrap}.admin-actions button{padding:9px 13px;background:var(--navy);color:#fff;border:0}
+footer{background:var(--navy);color:#c6cbd5;text-align:center;padding:32px 15px;font-size:12px}footer strong{color:#fff}
+@media(max-width:700px){nav{padding:14px 5%;align-items:flex-start;gap:10px;flex-direction:column}.nav-links{gap:13px;flex-wrap:wrap}.nav-links a{font-size:11px}section{padding:52px 5%}.gallery{grid-template-columns:repeat(2,1fr);gap:10px}.price-grid{grid-template-columns:1fr}.form-box,.admin-box{padding:21px}}
+</style>
+</head>
+<body>
+<nav>
+  <div class="logo">ART STUDIO.</div>
+  <div class="nav-links"><a href="#gallery">Works</a><a href="#prices">Prices</a><a href="#availability">Queue</a><a href="#order">Order</a><a href="#admin">Artist</a></div>
+</nav>
+<header class="hero">
+  <small>ILLUSTRATION · ART · COMMISSION</small>
+  <h1>Art is my<br>language.</h1>
+  <p>Welcome to my art studio. Explore my works and commission your own illustration.</p>
+  <a href="#order" class="btn">ORDER COMMISSION ↗</a>
+</header>
+
+<section id="availability">
+  <div class="section-title"><h2>Commission Status</h2><p>Current availability and queue information</p></div>
+  <div class="status-panel">
+    <div><strong>Current Status</strong><p id="statusText" class="status-label">กำลังโหลด...</p></div>
+    <div><strong>Available Slots</strong><p id="queueText">กำลังโหลด...</p></div>
+  </div>
+</section>
+
+<section id="gallery">
+  <div class="section-title"><h2>Selected Works</h2><p>A collection of my illustrations</p></div>
+  <div class="gallery" id="galleryGrid"><p>กำลังโหลดผลงาน...</p></div>
+</section>
+
+<section id="prices">
+  <div class="section-title"><h2>Commission Menu</h2><p>Choose your preferred illustration type</p></div>
+  <div class="price-grid" id="priceGrid"><p>กำลังโหลดราคา...</p></div>
+</section>
+
+<section id="queue">
+  <div class="queue-box"><h3>Commission Queue</h3><p>จำนวนคิวที่สามารถรับได้ในขณะนี้</p><div class="queue-number" id="remainingSlots">-</div><p>Available Slots</p></div>
+</section>
+
+<section id="order">
+  <div class="section-title"><h2>Place an Order</h2><p>Tell me about your desired artwork</p></div>
+  <form id="orderForm" class="form-box">
+    <div class="field"><label for="customerName">ชื่อผู้สั่งงาน</label><input id="customerName" maxlength="100" required></div>
+    <div class="field"><label for="customerContact">ช่องทางติดต่อ</label><input id="customerContact" maxlength="150" placeholder="Instagram / X / Email" required></div>
+    <div class="field"><label for="serviceSelect">ประเภทงาน</label><select id="serviceSelect" required><option value="">เลือกประเภทงาน</option></select></div>
+    <div class="field"><label for="details">รายละเอียดงาน</label><textarea id="details" maxlength="3000" required placeholder="อธิบายรายละเอียดของภาพที่ต้องการ"></textarea></div>
+    <div class="field"><label for="reference">ลิงก์ภาพ Reference (ถ้ามี)</label><input id="reference" type="url" placeholder="https://..."></div>
+    <button class="submit-btn" id="orderSubmit" type="submit">SUBMIT ORDER ↗</button>
+    <p class="note">การส่งคำสั่งซื้อเป็นการจองคิวเบื้องต้น คิวจะยังไม่ถือว่ายืนยันจนกว่า Artist จะตรวจสอบการชำระเงิน</p>
+  </form>
+  <div class="payment-box" id="paymentBox">
+    <h2>Payment</h2><p>หมายเลขออเดอร์: <strong id="orderNumber"></strong></p>
+    <p>ยอดชำระ: <strong id="paymentAmount"></strong> บาท</p>
+    <img id="qrImage" alt="PromptPay QR Code"><p>สแกน QR Code เพื่อชำระเงิน</p>
+    <p class="note">โปรดตรวจสอบชื่อผู้รับและยอดเงินในแอปธนาคารก่อนยืนยันการโอน</p>
+    <div class="field"><label for="paymentSlip">แนบหลักฐานการชำระเงิน</label><input type="file" id="paymentSlip" accept="image/jpeg,image/png,image/webp"></div>
+    <button class="submit-btn" id="uploadSlip">ส่งหลักฐานการชำระเงิน</button><p id="paymentMessage" class="note"></p>
+  </div>
+</section>
+
+<section id="admin">
+  <div class="section-title"><h2>Artist Dashboard</h2><p>Private management system</p></div>
+  <div class="admin-box">
+    <div id="loginPanel">
+      <h3>Admin Login</h3>
+      <div class="field"><label for="adminEmail">Email</label><input type="email" id="adminEmail" autocomplete="username"></div>
+      <div class="field"><label for="adminPassword">Password</label><input type="password" id="adminPassword" autocomplete="current-password"></div>
+      <button class="submit-btn" id="adminLogin">LOGIN</button><p id="loginMessage" class="note"></p>
+    </div>
+    <div id="dashboard" class="hidden">
+      <h3>Welcome, Artist.</h3><button class="btn" id="logout">LOG OUT</button>
+      <div class="admin-section">
+        <h3>Commission Settings</h3>
+        <div class="field"><label for="adminOpen">สถานะเปิดรับงาน</label><select id="adminOpen"><option value="true">OPEN</option><option value="false">CLOSED</option></select></div>
+        <div class="field"><label for="adminMaxSlots">จำนวนคิวสูงสุด</label><input type="number" id="adminMaxSlots" min="1" max="100"></div>
+        <button class="submit-btn" id="saveSettings">SAVE SETTINGS</button>
+      </div>
+      <div class="admin-section">
+        <h3>Manage Prices</h3>
+        <div class="field"><label for="serviceId">รหัสประเภทงาน (เช่น headshot)</label><input id="serviceId"></div>
+        <div class="field"><label for="serviceName">ชื่อประเภทงาน</label><input id="serviceName"></div>
+        <div class="field"><label for="servicePrice">ราคา (บาท)</label><input type="number" id="servicePrice" min="1"></div>
+        <div class="field"><label for="serviceDescription">รายละเอียด</label><input id="serviceDescription"></div>
+        <button class="submit-btn" id="saveService">SAVE SERVICE</button>
+      </div>
+      <div class="admin-section">
+        <h3>Add Artwork to Gallery</h3>
+        <div class="field"><label for="artTitle">ชื่อผลงาน</label><input id="artTitle"></div>
+        <div class="field"><label for="artImage">ลิงก์รูปภาพ HTTPS</label><input id="artImage" type="url"></div>
+        <button class="submit-btn" id="addArtwork">ADD ARTWORK</button>
+      </div>
+      <div class="admin-section"><h3>Order Management</h3><div id="ordersList">กำลังโหลด...</div></div>
+    </div>
+  </div>
+</section>
+<footer><p><strong>ART STUDIO.</strong></p><p>Thank you for supporting my art ♡</p><p>© 2026 ART STUDIO. All rights reserved.</p></footer>
+
+<script type="module">
+import {initializeApp} from "https://www.gstatic.com/firebasejs/11.10.0/firebase-app.js";
+import {getAuth,signInAnonymously,signInWithEmailAndPassword,signOut} from "https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js";
+import {getFirestore,collection,doc,onSnapshot,updateDoc,addDoc,serverTimestamp,query,orderBy} from "https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js";
+import {getStorage,ref,uploadBytes,getDownloadURL} from "https://www.gstatic.com/firebasejs/11.10.0/firebase-storage.js";
+import {getFunctions,httpsCallable} from "https://www.gstatic.com/firebasejs/11.10.0/firebase-functions.js";
+
+/* ใส่ Firebase Web Config ของโปรเจกต์คุณตรงนี้ */
+const firebaseConfig={
+  apiKey:"YOUR_API_KEY",
+  authDomain:"YOUR_PROJECT_ID.firebaseapp.com",
+  projectId:"YOUR_PROJECT_ID",
+  storageBucket:"YOUR_PROJECT_ID.firebasestorage.app",
+  messagingSenderId:"YOUR_MESSAGING_SENDER_ID",
+  appId:"YOUR_APP_ID"
+};
+if(firebaseConfig.apiKey==="YOUR_API_KEY") {
+  document.getElementById("statusText").textContent="กรุณาตั้งค่า Firebase Config ก่อนใช้งาน";
+  document.getElementById("galleryGrid").innerHTML="<p>กรุณาใส่ Firebase Config ในไฟล์ index.html</p>";
+  throw new Error("Firebase config is not configured");
+}
+const app=initializeApp(firebaseConfig),auth=getAuth(app),db=getFirestore(app),storage=getStorage(app);
+const functions=getFunctions(app,"asia-southeast1");
+const callCreateOrder=httpsCallable(functions,"createOrder");
+const callUpdateOrder=httpsCallable(functions,"updateOrderStatus");
+const callUpdateSettings=httpsCallable(functions,"updateSettings");
+const callUpsertService=httpsCallable(functions,"upsertService");
+const callBootstrapAdmin=httpsCallable(functions,"bootstrapAdmin");
+let currentOrderId=null,unsubscribeOrders=null,isAdmin=false;
+
+function esc(v){return String(v??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));}
+function httpsUrl(v){try{const u=new URL(v);return u.protocol==="https:"?u.href:"";}catch{return "";}}
+await signInAnonymously(auth);
+
+onSnapshot(doc(db,"settings","public"),snap=>{
+  if(!snap.exists())return;
+  const s=snap.data(),remaining=Math.max(0,s.maxSlots-s.activeSlots);
+  const status=document.getElementById("statusText");
+  status.textContent=s.isOpen?"● OPEN":"● CLOSED";
+  status.className=s.isOpen?"status-label":"status-label closed";
+  document.getElementById("queueText").textContent=`${remaining} / ${s.maxSlots} คิว`;
+  document.getElementById("remainingSlots").textContent=remaining;
+  document.getElementById("orderSubmit").disabled=!s.isOpen||remaining<=0;
+  if(isAdmin){document.getElementById("adminOpen").value=String(s.isOpen);document.getElementById("adminMaxSlots").value=s.maxSlots;}
+},err=>console.error(err));
+
+onSnapshot(collection(db,"services"),snap=>{
+  const services=snap.docs.map(d=>({id:d.id,...d.data()}));
+  document.getElementById("priceGrid").innerHTML=services.map(s=>`<div class="price-card"><h3>${esc(s.name)}</h3><div class="amount">${Number(s.price).toLocaleString("th-TH")} ฿</div><p>${esc(s.description||"")}</p></div>`).join("")||"<p>ยังไม่มีประเภทงาน</p>";
+  document.getElementById("serviceSelect").innerHTML='<option value="">เลือกประเภทงาน</option>'+services.map(s=>`<option value="${esc(s.id)}">${esc(s.name)} — ${Number(s.price).toLocaleString("th-TH")} ฿</option>`).join("");
+},err=>console.error(err));
+
+onSnapshot(collection(db,"gallery"),snap=>{
+  const items=snap.docs.map(d=>d.data());
+  document.getElementById("galleryGrid").innerHTML=items.map(a=>`<div class="art-card"><img src="${httpsUrl(a.imageUrl)}" alt="${esc(a.title)}" loading="lazy"><div class="art-info"><h3>${esc(a.title)}</h3><p>Selected Artwork</p></div></div>`).join("")||"<p>ยังไม่มีผลงาน</p>";
+},err=>console.error(err));
+
+document.getElementById("orderForm").addEventListener("submit",async e=>{
+  e.preventDefault();const btn=document.getElementById("orderSubmit");btn.disabled=true;btn.textContent="กำลังส่งคำสั่งซื้อ...";
+  try{
+    const result=await callCreateOrder({
+      name:document.getElementById("customerName").value.trim(),
+      contact:document.getElementById("customerContact").value.trim(),
+      serviceId:document.getElementById("serviceSelect").value,
+      details:document.getElementById("details").value.trim(),
+      reference:document.getElementById("reference").value.trim()
+    });
+    currentOrderId=result.data.orderId;
+    document.getElementById("orderNumber").textContent=currentOrderId;
+    document.getElementById("paymentAmount").textContent=Number(result.data.amount).toLocaleString("th-TH");
+    document.getElementById("qrImage").src=result.data.qrDataUrl;
+    document.getElementById("paymentBox").style.display="block";
+    document.getElementById("paymentBox").scrollIntoView({behavior:"smooth"});
+    e.target.reset();
+  }catch(err){alert(err.message||"ไม่สามารถส่งคำสั่งซื้อได้");}
+  finally{btn.textContent="SUBMIT ORDER ↗";btn.disabled=false;}
+});
+
+document.getElementById("uploadSlip").addEventListener("click",async()=>{
+  const file=document.getElementById("paymentSlip").files[0],msg=document.getElementById("paymentMessage");
+  if(!currentOrderId)return alert("ไม่พบหมายเลขออเดอร์");
+  if(!file)return alert("กรุณาเลือกภาพสลิป");
+  if(!["image/jpeg","image/png","image/webp"].includes(file.type)||file.size>5*1024*1024)return alert("รองรับ JPG, PNG, WEBP ขนาดไม่เกิน 5 MB");
+  const btn=document.getElementById("uploadSlip");btn.disabled=true;
+  try{
+    const path=`payment-slips/${auth.currentUser.uid}/${currentOrderId}/slip`;
+    const fileRef=ref(storage,path);await uploadBytes(fileRef,file,{contentType:file.type});
+    const url=await getDownloadURL(fileRef);
+    await updateDoc(doc(db,"orders",currentOrderId),{paymentProofUrl:url,paymentSubmittedAt:serverTimestamp()});
+    msg.textContent="ส่งหลักฐานแล้ว กรุณารอ Artist ตรวจสอบการชำระเงิน";
+    document.getElementById("paymentSlip").value="";
+  }catch(err){msg.textContent=err.message;}
+  finally{btn.disabled=false;}
+});
+
+document.getElementById("adminLogin").addEventListener("click",async()=>{
+  const msg=document.getElementById("loginMessage");
+  try{
+    const email=document.getElementById("adminEmail").value.trim(),password=document.getElementById("adminPassword").value;
+    await signInWithEmailAndPassword(auth,email,password);
+    await callBootstrapAdmin();
+    await auth.currentUser.getIdToken(true);
+    const token=await auth.currentUser.getIdTokenResult(true);
+    if(!token.claims.admin)throw new Error("บัญชีนี้ไม่มีสิทธิ์ Admin");
+    isAdmin=true;document.getElementById("loginPanel").classList.add("hidden");document.getElementById("dashboard").classList.remove("hidden");loadOrders();
+  }catch(err){msg.textContent=err.message||"เข้าสู่ระบบไม่สำเร็จ";}
+});
+
+document.getElementById("logout").addEventListener("click",async()=>{
+  if(unsubscribeOrders)unsubscribeOrders();unsubscribeOrders=null;isAdmin=false;
+  await signOut(auth);await signInAnonymously(auth);
+  document.getElementById("dashboard").classList.add("hidden");document.getElementById("loginPanel").classList.remove("hidden");
+});
+
+document.getElementById("saveSettings").addEventListener("click",async()=>{
+  try{await callUpdateSettings({isOpen:document.getElementById("adminOpen").value==="true",maxSlots:Number(document.getElementById("adminMaxSlots").value)});alert("บันทึกการตั้งค่าแล้ว");}
+  catch(err){alert(err.message);}
+});
+document.getElementById("saveService").addEventListener("click",async()=>{
+  try{await callUpsertService({id:document.getElementById("serviceId").value.trim(),name:document.getElementById("serviceName").value.trim(),price:Number(document.getElementById("servicePrice").value),description:document.getElementById("serviceDescription").value.trim()});alert("บันทึกราคาแล้ว");}
+  catch(err){alert(err.message);}
+});
+document.getElementById("addArtwork").addEventListener("click",async()=>{
+  if(!isAdmin)return;
+  const title=document.getElementById("artTitle").value.trim(),imageUrl=httpsUrl(document.getElementById("artImage").value.trim());
+  if(!title||!imageUrl)return alert("กรอกชื่อผลงานและลิงก์ภาพ HTTPS ให้ถูกต้อง");
+  try{await addDoc(collection(db,"gallery"),{title,imageUrl,createdAt:serverTimestamp()});alert("เพิ่มผลงานแล้ว");document.getElementById("artTitle").value="";document.getElementById("artImage").value="";}
+  catch(err){alert(err.message);}
+});
+
+function loadOrders(){
+  if(unsubscribeOrders)unsubscribeOrders();
+  const q=query(collection(db,"orders"),orderBy("createdAt","desc"));
+  unsubscribeOrders=onSnapshot(q,snap=>{
+    document.getElementById("ordersList").innerHTML=snap.docs.map(d=>{
+      const o=d.data(),proof=o.paymentProofUrl?`<a href="${esc(o.paymentProofUrl)}" target="_blank" rel="noopener">ดูสลิป</a>`:"ยังไม่แนบ";
+      return `<div class="order-card"><h3>${esc(o.name)}</h3><p>Order: ${esc(d.id)}</p><p>ติดต่อ: ${esc(o.contact)}</p><p>ประเภท: ${esc(o.serviceName)}</p><p>รายละเอียด: ${esc(o.details)}</p><p>ยอดชำระ: ${Number(o.amount).toLocaleString("th-TH")} บาท</p><p>สถานะ: <strong>${esc(o.status)}</strong></p><p>หลักฐาน: ${proof}</p><div class="field"><select id="status-${esc(d.id)}"><option value="awaiting_payment">รอตรวจสอบการชำระเงิน</option><option value="paid">ชำระเงินแล้ว</option><option value="in_progress">กำลังวาด</option><option value="completed">เสร็จสิ้น</option><option value="cancelled">ยกเลิก</option></select></div><button class="submit-btn" data-order="${esc(d.id)}">UPDATE STATUS</button></div>`;
+    }).join("")||"<p>ยังไม่มีออเดอร์</p>";
+    snap.docs.forEach(d=>{const el=document.getElementById("status-"+d.id);if(el)el.value=d.data().status;});
+    document.querySelectorAll("[data-order]").forEach(btn=>{btn.onclick=async()=>{try{const id=btn.dataset.order,status=document.getElementById("status-"+id).value;await callUpdateOrder({orderId:id,status});alert("อัปเดตสถานะแล้ว");}catch(err){alert(err.message);}};});
+  },err=>{document.getElementById("ordersList").textContent=err.message;});
+}
+</script>
+</body>
+</html>
